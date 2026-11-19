@@ -34,12 +34,12 @@ RELEVANT_SECTION_TERMS = (
 )
 
 def clean_text(value):
-    return re.sub(r"\\s+", " ", value or "").strip()
+    return re.sub(r"\s+", " ", value or "").strip()
 
 def write_jsonl(path, rows):
     with path.open("w", encoding="utf-8") as f:
         for row in rows:
-            f.write(json.dumps(row, ensure_ascii=False) + "\\n")
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 def get_label_candidates(session, drug):
     response = session.get(
@@ -98,7 +98,7 @@ def main():
     downloaded_labels = 0
 
     for drug in DRUGS:
-        print(f"\\n[DailyMed] Searching: {drug}")
+        print(f"\n[DailyMed] Searching: {drug}")
         labels, total = get_label_candidates(session, drug)
         print(f"  API reports {total} labels; selecting {len(labels)} recent single-ingredient labels")
         for label in labels:
@@ -139,7 +139,7 @@ def main():
     if not record_rows:
         raise RuntimeError("No DailyMed chunks extracted; existing stores were not changed.")
 
-    print(f"\\n[DailyMed] Embedding {len(record_rows)} chunks on CPU...")
+    print(f"\n[DailyMed] Embedding {len(record_rows)} chunks on CPU...")
     model = SentenceTransformer(EMBED_MODEL, device="cpu")
     embeddings = model.encode(
         [row["text"] for row in record_rows], batch_size=BATCH_SIZE,
@@ -164,8 +164,8 @@ if __name__ == "__main__":
     try:
         main()
     except requests.RequestException as exc:
-        print(f"\\nNETWORK/API ERROR: {exc}", file=sys.stderr)
+        print(f"\nNETWORK/API ERROR: {exc}", file=sys.stderr)
         sys.exit(1)
     except Exception as exc:
-        print(f"\\nINGESTION ERROR: {exc}", file=sys.stderr)
+        print(f"\nINGESTION ERROR: {exc}", file=sys.stderr)
         raise
