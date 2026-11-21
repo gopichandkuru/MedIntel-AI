@@ -40,3 +40,34 @@ Thumbs.db
 
 # Serialized model artifacts
 *.joblib
+
+# MedIntel local files and backups
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+*backup*
+*before*
+*.save*
+*.bak
+*.pre_*
+*.gguf
+*.safetensors
+*.onnx
+*.npy
+*.npz
+*.pdf
+*.zip
+.audit_backups/
+results/reports/
+data/raw/
+data/processed/
+
+# Local model weights, training output and generated reports
+models/
+results/
+unsloth_compiled_cache/
+rc.rag import generate_answer as rag
+tatus --short
+taged changes
