@@ -53,7 +53,7 @@ class UnifiedMedicalRAG:
     def _load_stores(self) -> None:
         embedding_arrays = []
         drugs = set()
-        for emb_path in sorted(self.processed_dir.glob("*/retrieval/*_embeddings.npy")):
+        for emb_path in sorted(self.processed_dir.rglob("*_embeddings.npy")):
             prefix = emb_path.name.replace("_embeddings.npy", "")
             rec_path = emb_path.with_name(f"{prefix}_records.jsonl")
             meta_path = emb_path.with_name(f"{prefix}_metadata.jsonl")
