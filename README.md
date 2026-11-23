@@ -24,7 +24,7 @@ MedIntel-AI targets the **clinical and consumer health information domain**—co
 ## Benchmark: Base Model vs. MedIntel-AI
 Evaluated locally on 10 clinical Q&A prompts (`max_new_tokens=128`, `temperature=0.2`, `repetition_penalty=1.15`, `float16`):
 
-![Benchmark Comparison](benchmark_comparison.png)
+![Benchmark Comparison](https://huggingface.co/gopichand55k/MedIntel-AI/resolve/main/benchmark_comparison.png)
 
 | Metric | Base `Qwen2.5-0.5B-Instruct` | `MedIntel-AI` (Fine-Tuned) |
 | :--- | :---: | :---: |
