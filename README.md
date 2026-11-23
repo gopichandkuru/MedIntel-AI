@@ -56,9 +56,12 @@ outputs = model.generate(**inputs, max_new_tokens=150, temperature=0.2, do_sampl
 print(tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True))
 ```
 
-### Run with Ollama (GGUF)
+### Run GGUF Locally with Ollama
+Download `medintel-qwen2.5-0.5b-q8_0.gguf` from this repo and create the Ollama model:
 ```bash
-ollama run hf.co/gopichand55k/MedIntel-AI-GGUF:Q8_0
+huggingface-cli download gopichand55k/MedIntel-AI medintel-qwen2.5-0.5b-q8_0.gguf --local-dir .
+ollama create medintel -f Modelfile
+ollama run medintel
 ```
 
 ### Run the Full Local RAG App
